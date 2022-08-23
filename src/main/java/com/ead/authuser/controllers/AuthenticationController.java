@@ -2,7 +2,7 @@ package com.ead.authuser.controllers;
 
 import com.ead.authuser.dtos.UserDto;
 import com.ead.authuser.enums.UserStatus;
-import com.ead.authuser.enums.Usertype;
+import com.ead.authuser.enums.UserType;
 import com.ead.authuser.models.UserModel;
 import com.ead.authuser.services.UserService;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -38,7 +38,7 @@ public class AuthenticationController {
         var userModel = new UserModel();
         BeanUtils.copyProperties(userDto, userModel);
         userModel.setUserStatus(UserStatus.ACTIVE);
-        userModel.setUsertype(Usertype.STUDENT);
+        userModel.setUsertype(UserType.STUDENT);
         userModel.setCreationDate(LocalDateTime.now(ZoneId.of("UTC")));
         userModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
         userService.save(userModel);

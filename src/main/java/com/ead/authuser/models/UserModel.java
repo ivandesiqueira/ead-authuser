@@ -1,11 +1,13 @@
 package com.ead.authuser.models;
 
 import com.ead.authuser.enums.UserStatus;
-import com.ead.authuser.enums.Usertype;
+import com.ead.authuser.enums.UserType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import org.springframework.hateoas.RepresentationModel;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,7 +18,7 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Table(name = "TB_USERS")
-public class UserModel implements Serializable {
+public class UserModel extends RepresentationModel<UserModel> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -36,7 +38,7 @@ public class UserModel implements Serializable {
     private UserStatus userStatus;
     @Column(nullable = false)
     @Enumerated (EnumType.STRING)
-    private Usertype usertype;
+    private UserType usertype;
     @Column(length = 20)
     private String phoneNumber;
     @Column(length = 20)
